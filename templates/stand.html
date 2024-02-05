@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Season
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <div class="container2">
+            <div class="text-container">
+                <h2>Premier League</h2>
+            </div>
+            <div class="image-container">
+                <img src="https://crests.football-data.org/PL.png" srcset="https://crests.football-data.org/PL.png, https://crests.football-data.org/PL.png 2x" height="100" width="100">
+            </div>
+        </div>
+        <div class="container2">
+            <div class="text-container">
+                <h3>Country: England</h3>
+            </div>
+            <div class="image-container">
+                <img src="https://crests.football-data.org/770.svg" srcset="https://crests.football-data.org/770.svg, https://crests.football-data.org/770.svg 2x" height="40" width="40">
+            </div>
+        </div>
+        <h3>Current Season: {{ c_season | fan }}</h3>
+    </div>
+    <form class="section" action="/" method="post">
+        <label for="season">Choose a season:</label>
+        <select name="season">
+            <option value="{{ s_season }}" selected>{{ s_season | fan }}</option>
+            {% for season in seasons %}
+                {% if season != s_season %}
+                    <option value="{{ season }}">{{ season | fan }}</option>
+                {% endif %}
+            {% endfor %}
+            {% if (c_season not in seasons) and (c_season != s_season) %}
+                <option value="c_season" selected>{{ c_season | fan }}</option>
+            {% endif %}
+        </select>
+        <label for="type">Type:</label>
+        <select name="type">
+            <option value="{{ s_type }}" selected>{{ s_type }}</option>
+            {% for type in types %}
+                {% if type != s_type %}
+                    <option value="{{ type }}">{{ type }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <button class="btn btn-primary" type="submit">Apply</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th class="t1">Position</th>
+                <th class="t2">Position</th>
+                <th class="t3"></th>
+                <th class="t1">Club</th>
+                <th class="t2">Club</th>
+                <th class="t3">club</th>
+                <th class="t1">played</th>
+                <th class="t2">played</th>
+                <th class="t3">Pl</th>
+                <th class="t1">Won</th>
+                <th class="t2">Won</th>
+                <th class="t3">W</th>
+                <th class="t1">Draw</th>
+                <th class="t2">Draw</th>
+                <th class="t3">D</th>
+                <th class="t1">Lost</th>
+                <th class="t2">Lost</th>
+                <th class="t3">L</th>
+                <th class="t1">GS</th>
+                <th class="t2">GS</th>
+                <th class="t1">GC</th>
+                <th class="t2">GC</th>
+                <th class="t1">GD</th>
+                <th class="t2">GD</th>
+                <th class="t3">GD</th>
+                <th class="t1">Points</th>
+                <th class="t2">Points</th>
+                <th class="t3">Pts</th>
+                <th class="t1">Form</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stand in standing %}
+                <tr>
+                    <td class="t1 position">{{ stand["position"] }}</td>
+                    <td class="t2 position">{{ stand["position"] }}</td>
+                    <td class="t3 position">{{ stand["position"] }}</td>
+                    <td class="t1" scope="row">
+                        <a href="/team={{ stand["team_id"] }}" data-ur1313m3t="true">
+                            <span data-widget="club-badge-image" data-size="100">
+                                <img src="{{ stand["crest"] }}" srcset="{{ stand["crest"] }}, {{ stand["crest"] }} 2x" class="team-crest">
+                            </span>
+                            <span class="team-name">{{ stand["name"] }}</span>
+                        </a>
+                    </td>
+                    <td class="t2" scope="row">
+                        <a href="/team={{ stand["team_id"] }}" data-ur1313m3t="true">
+                            <span data-widget="club-badge-image" data-size="100">
+                                <img src="{{ stand["crest"] }}" srcset="{{ stand["crest"] }}, {{ stand["crest"] }} 2x" class="team-crest">
+                            </span>
+                            <span class="team-name">{{ stand["short_name"] }}</span>
+                        </a>
+                    </td>
+                    <td class="t3" scope="row">
+                        <a href="/team={{ stand["team_id"] }}" data-ur1313m3t="true">
+                            <span data-widget="club-badge-image" data-size="10">
+                                <img src="{{ stand["crest"] }}" srcset="{{ stand["crest"] }}, {{ stand["crest"] }} 2x" class="team-crest">
+                            </span>
+                            <span class="team-name">{{ stand["tla"] }}</span>
+                        </a>
+                    </td>
+                    <td class="t1">{{ stand["played"] }}</td>
+                    <td class="t2">{{ stand["played"] }}</td>
+                    <td class="t3">{{ stand["played"] }}</td>
+                    <td class="t1">{{ stand["won"] }}</td>
+                    <td class="t2">{{ stand["won"] }}</td>
+                    <td class="t3">{{ stand["won"] }}</td>
+                    <td class="t1">{{ stand["draw"] }}</td>
+                    <td class="t2">{{ stand["draw"] }}</td>
+                    <td class="t3">{{ stand["draw"] }}</td>
+                    <td class="t1">{{ stand["lost"] }}</td>
+                    <td class="t2">{{ stand["lost"] }}</td>
+                    <td class="t3">{{ stand["lost"] }}</td>
+                    <td class="t1">{{ stand["goalsFor"] }}</td>
+                    <td class="t2">{{ stand["goalsFor"] }}</td>
+                    <td class="t1">{{ stand["goalsAgainst"] }}</td>
+                    <td class="t2">{{ stand["goalsAgainst"] }}</td>
+                    <td class="t1">{{ stand["goalDifference"] }}</td>
+                    <td class="t2">{{ stand["goalDifference"] }}</td>
+                    <td class="t3">{{ stand["goalDifference"] }}</td>
+                    <td class="t1 points">{{ stand["points"] }}</td>
+                    <td class="t2 points">{{ stand["points"] }}</td>
+                    <td class="t3 points">{{ stand["points"] }}</td>
+                    <td class="t1">{{ stand["form"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

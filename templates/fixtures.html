@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Fixtures
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <div class="container2">
+            <div class="text-container">
+                <h2>Premier League</h2>
+            </div>
+            <div class="image-container">
+                <img src="https://crests.football-data.org/PL.png" srcset="https://crests.football-data.org/PL.png, https://crests.football-data.org/PL.png 2x" height="100" width="100">
+            </div>
+        </div>
+        <div class="container2">
+            <div class="text-container">
+                <h3>Country: England</h3>
+            </div>
+            <div class="image-container">
+                <img src="https://crests.football-data.org/770.svg" srcset="https://crests.football-data.org/770.svg, https://crests.football-data.org/770.svg 2x" height="40" width="40">
+            </div>
+        </div>
+        <h3>Current Season: {{ c_season | fan }}</h3>
+        <h4>Start Date: {{ start }}</h4><h4>End Date: {{ end }}</h4>
+        <h3>Progress: {{ played }} / 380</h3>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+            <div id="data-container" data-matchday="{{ played }}"></div>
+        </div>
+        <script>
+            const dataContainer = document.getElementById('data-container');
+            const numerator = dataContainer.getAttribute('data-matchday');
+            const denominator = 380;
+            const ratio = numerator / denominator;
+        
+            const progressBar = document.getElementById("progress-bar");
+            progressBar.style.width = `${ratio * 100}%`;
+        </script>
+    </div>
+    <form class="section" action="/fixtures" method="post">
+        <label for="GW">Choose a GameWeek:</label>
+        <select name="GW">
+            <option value="{{ s_GW }}" selected>GameWeek {{ s_GW }}</option>
+            {% for GW in gameweeks %}
+                {% if GW != s_GW %}
+                    <option value="{{ GW }}">GameWeek {{ GW }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <button class="btn btn-primary" type="submit">Apply</button>
+    </form>
+    <div class="gameweek-fixtures">
+        {% for match in gw_matches %}
+            <div class="fixture-card">
+                <div class="team home">
+                    <img src="{{ match["homeTeam"]["crest"] }}" srcset="{{ match["homeTeam"]["crest"] }}, {{ match["homeTeam"]["crest"] }} 2x">
+                    <span class="team-name2">{{ match["homeTeam"]["shortName"]}}</span>
+                </div>
+                <a href="/match={{ match["id"] }}" data-ur1313m3t="true">
+                    {% if match["status"] == "FINISHED" %}
+                        <div class="score">{{ match["score"]["fullTime"]["home"] }} : {{ match["score"]["fullTime"]["away"] }}<span class="status">FT</span></div>
+                    {% elif match["score"]["halfTime"]["home"] is not none %}
+                        <div class="score">{{ match["score"]["halfTime"]["home"] }} : {{ match["score"]["halfTime"]["away"] }}<span class="status">HT</span></div>
+                    {% elif match["score"]["fullTime"]["home"] is not none %}
+                        <div class="score">0 : 0<span class="status">LIVE</span></div>
+                    {% else %}
+                        <div class="score">- : -</div>
+                    {% endif %}
+                </a>
+                <div class="team away">
+                    <span class="team-name2">{{ match["awayTeam"]["shortName"]}}</span>
+                    <img src="{{ match["awayTeam"]["crest"] }}" srcset="{{ match["awayTeam"]["crest"] }}, {{ match["awayTeam"]["crest"] }} 2x">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

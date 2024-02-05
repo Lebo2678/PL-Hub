@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Winners
+{% endblock %}
+
+{% block main %}
+    <div class="winners-list">
+        {% for winner in winners %}
+            <div class="winner">
+                <div class="winner-crest">
+                    <a href="/team={{ winner["team_id"] }}">
+                        <img src="{{ winner["crest"] }}" alt="{{ winner["short_name"] }} logo" srcset="{{ winner["crest"] }}, {{ winner["crest"] }} 2x">
+                    </a>
+                </div>
+                <div class="winner-info">
+                    <p class="winner-name">{{ winner["name"] }}</p>
+                    <p class="winner-season">{{ winner["season"] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

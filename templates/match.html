@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Match
+{% endblock %}
+
+{% block main %}
+    <div class="match-card-container">
+        <div class="match-card">
+            <div class="top">
+                {% if match["status"] == "TIMED" %}
+                    <div class="countdown" id="countdown"></div>
+                    <div class="status">{{ match["date"] }}</div>
+                {% elif match["status"] == "POSTPONED" %}
+                    <div class="match-status">{{ match["status"] }}</div>
+                {% else %}
+                    <div class="status">{{ match["date"] }}</div>
+                    <div class="match-status">{{ match["status"] }}</div>
+                {% endif %}
+            </div>
+            <div class="middle">
+                <div class="home-team">
+                    <a href="/team={{ match["homeTeam"]["id"] }}">
+                        <img src="{{ match["homeTeam"]["crest"] }}" alt="{{ match["homeTeam"]["shortName"] }} logo" srcset="{{ match["homeTeam"]["crest"] }}, {{ match["homeTeam"]["crest"] }} 2x">
+                        <span class="team-name">{{ match["homeTeam"]["shortName"] }}</span>
+                    </a>
+                </div>
+                <div class="score2">
+                    {% if match["score"]["fullTime"]["home"] is not none %}
+                        <span class="score-text">{{ match["score"]["fullTime"]["home"] }} : {{ match["score"]["fullTime"]["away"] }}</span>
+                    {% else %}
+                        <span class="score-text">- : -</span>
+                    {% endif %}
+                    {% if match["score"]["halfTime"]["home"] is not none %}
+                        <span class="ht-score">({{ match["score"]["halfTime"]["home"] }} : {{ match["score"]["halfTime"]["away"] }})</span>
+                    {% endif %}
+                </div>
+                <div class="away-team">
+                    <a href="/team={{ match["awayTeam"]["id"] }}">
+                        <span class="team-name">{{ match["awayTeam"]["shortName"] }}</span>
+                        <img src="{{ match["awayTeam"]["crest"] }}" alt="{{ match["awayTeam"]["shortName"] }} logo" srcset="{{ match["awayTeam"]["crest"] }}, {{ match["awayTeam"]["crest"] }} 2x">
+                    </a>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="stadium">Stadium: {{ stadium }}</div>
+                <div class="game-week">Gameweek {{ match["matchday"] }}</div>
+                {% if match["referees"][0] %}
+                    <div class="referees">Referee: {{ match["referees"][0]["name"] }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var matchTime = new Date("{{ match['date'] }}").getTime();
+            var countdown = document.getElementById("countdown");
+            var updateCountdown = function () {
+                var now = new Date().getTime();
+                var timeRemaining = matchTime - now;
+                if (timeRemaining <= 0) {
+                    countdown.innerHTML = "Match is live!";
+                } else {
+                    var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                    countdown.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                }
+            };
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+{% endblock %}

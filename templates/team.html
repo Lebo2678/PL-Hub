@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Team
+{% endblock %}
+
+{% block main %}
+    <div class="club-info-container">
+        <img src="{{ team["crest"] }}" alt="{{ team["name"] }} logo" srcset="{{ team["crest"] }}, {{ team["crest"] }} 2x" class="club-crest">
+        <div class="club-details">
+            <div>
+                <h1>Club: {{ team["name"] }}</h1>
+                <h3>Short Name: {{ team["short_name"] }}</h3>
+                <h3>Tla: {{ team["tla"] }}</h3>
+            </div>
+            <div><h3>Stadium: {{ team["venue"] }}</h3></div>
+            <div><h3>Club colors: {{ team["colors"] }}</h3></div>
+            <div><h3>Address: {{ team["address"] }}</h3></div>
+            <a href="{{ team["website"] }}" class="club-link" target="_blank"><h3>Official Website</h3></a>
+            <div><h3>Country: {{ team["country"] }}</h3></div>
+        </div>
+    </div>
+    <h2>Running Competitions</h2>
+    {% for competition in competitions %}
+    <div class="competition-card">
+        <img src="{{ competition["emblem"] }}" alt="{{ competition["name"] }} logo" srcset="{{ competition["emblem"] }}, {{ competition["emblem"] }} 2x" class="competition-logo">
+        <div class="competition-name">{{ competition["name"] }}</div>
+        <div class="competition-type">Type: {{ competition["type"] }}</div>
+    </div>
+    {% endfor %}
+    <div class="coach-info">
+        <h2>Coach</h2>
+        <div class="coach-name">{{ coach["name"] }}</div>
+        <div class="coach-nationality">Nationality: {{ coach["nationality"] }}</div>
+        <div class="contract-dates">
+            Contract Start: <span class="contract-start">{{ coach["contract"]["start"] }}</span> 
+            Contract End: <span class="contract-end">{{ coach["contract"]["until"] }}</span>
+        </div>
+    </div>
+    <div class="squad-section">
+        <h2>Squad</h2>
+        {% for player in squad %}
+            <div class="player-card">
+                <div class="player-name">{{ player["name"] }}</div>
+                <div class="player-position">{{ player["position"] }}</div>
+                <div class="player-nationality">{{ player["nationality"] }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
