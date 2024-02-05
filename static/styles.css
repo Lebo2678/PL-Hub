@@ -1,0 +1,512 @@
+@media (min-width: 865px) {
+    .t2 {
+        display: none;
+    }
+    .t3 {
+        display: none;
+    }
+}
+
+@media (max-width: 864px) and (min-width: 775px){
+    .t1 {
+        display: none;
+    }
+    .t3 {
+        display: none;
+    }
+}
+
+@media (max-width: 774px){
+    .t2 {
+        display: none;
+    }
+    .t1 {
+        display: none;
+    }
+}
+
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    margin-left: 10px;
+}
+
+.text-container {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    background-color: #37003c;
+    color: white;
+    padding: 10px 0;
+}
+
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+.menubar a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+
+.menubar a:visited {
+    color: white;
+}
+
+.menubar a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+a {
+    text-decoration: none;
+    color: #00e;
+}
+
+a:visited {
+    color: #00e;
+}
+
+body {
+    background-color: #fff;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    width: 90%;
+}
+
+
+.section {
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+}
+
+.section:hover {
+    background-color: #f5f5f5;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+}
+
+button, input[type="submit"] {
+    background-color: #d9edff;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    text-align: center;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    vertical-align: middle;
+}
+
+input[type="text"], input[type="number"] {
+    line-height: 1.8;
+    width: 25%;
+}
+
+input[type="text"]:hover, input[type="number"]:hover {
+    background-color: #f5f5f5;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #59a4f5;
+    border-radius: 15px;
+    width: 0; /* This will be adjusted using JavaScript */
+    transition: width 0.3s ease-in-out;
+}
+
+table {
+    background-color: transparent;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+.position {
+    width: 5%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.team-crest {
+    max-width: 30px;
+    margin-right: 10px;
+}
+
+.team-name {
+    flex: 1;
+    font-weight: bold;
+}
+
+.points {
+    width: 10%;
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.club-info-container {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.club-crest {
+    max-width: 120px;
+    margin-right: 20px;
+}
+
+.club-details {
+    flex: 1;
+    font-size: 14px;
+    color: #777;
+}
+
+.club-link {
+    display: inline-block;
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.competition-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.competition-logo {
+    max-width: 60px;
+    margin-bottom: 10px;
+}
+
+.competition-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.competition-type {
+    font-size: 14px;
+    color: #777;
+}
+
+.coach-info {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.coach-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.coach-nationality {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.contract-dates {
+    font-size: 14px;
+    color: #555;
+}
+
+.contract-start, .contract-end {
+    margin: 5px;
+}
+
+.contract-end {
+    color: #d9534f;
+}
+
+.squad-section {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.player-card {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.player-name {
+    font-weight: bold;
+    flex: 1;
+}
+
+.player-position {
+    margin-left: 10px;
+    width: 30%;
+    padding: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+.player-nationality {
+    width: 30%;
+    padding: 10px;
+    font-size: 14px;
+    color: #777;
+    text-align: right;
+}
+
+.gameweek-fixtures {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fixture-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+}
+
+.team img {
+    width: 30px;
+    height: 30px;
+}
+
+.team-name2 {
+    font-weight: bold;
+}
+
+.score {
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.status {
+    margin-left: 5px;
+    font-size: 12px;
+    padding: 2px 5px;
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+.match-card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.match-card {
+    border: 1px solid #ccc;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.countdown {
+    font-weight: bold;
+}
+
+.match-status {
+    font-style: italic;
+}
+
+.middle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.score2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ht-score {
+    font-size: 12px;
+}
+
+.home-team {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    img {
+        margin-right: 10px;
+    }
+}
+
+.home-team img,
+.away-team img {
+    width: 80px;
+    height: 80px;
+}
+
+.away-team {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    img {
+        margin-left: 10px;
+    }
+}
+
+
+.team-name {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-week,
+.referees,
+.stadium {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.winners-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.winner {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.winner-crest img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.winner-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.winner-name {
+    font-weight: bold;
+}
+
+.winner-season {
+    font-size: 14px;
+    color: #555;
+}
